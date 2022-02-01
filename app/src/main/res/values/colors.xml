@@ -11,6 +11,6 @@
     <!--    CUSTOM COLORS   -->
     <color name="mainColorDark">#00796B</color>
     <color name="mainColorLight">#009688</color>
-    <color name="btnColorRed">#607D8B</color>
+    <color name="btnColorRed">#03A9F4</color>
 
 </resources>

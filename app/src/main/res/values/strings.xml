@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">TODO List</string>
     <string name="add_your_task">Add Your Task</string>
+
+    <string name="search">Search</string>
+    <string name="sort">Sort</string>
+    <string name="sort_by_name">Sort by name</string>
+    <string name="sort_by_date_create">Sort by date create</string>
+    <string name="hide_all_completed">Hide all completed</string>
+    <string name="delete_all_completed">Delete all completed</string>
 </resources>
