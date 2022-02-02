@@ -6,7 +6,8 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface TaskDao {
 
-    fun getTasks(query: String, sortOrder: SortOrder, hideCompleted: Boolean): Flow<List<Task>> =when (sortOrder) {
+    fun getTasks(query: String, sortOrder: SortOrder, hideCompleted: Boolean): Flow<List<Task>> =
+        when (sortOrder) {
             SortOrder.BY_DATE -> getTasksSortedByDateCreated(query, hideCompleted)
             SortOrder.BY_NAME -> getTasksSortedByDateCreated(query, hideCompleted)
         }
@@ -25,4 +26,7 @@ interface TaskDao {
 
     @Delete
     suspend fun delete(task: Task)
+
+    @Query("DELETE FROM TASK_TABLE WHERE completed=1")
+    suspend fun deleteCompletedTasks()
 }
