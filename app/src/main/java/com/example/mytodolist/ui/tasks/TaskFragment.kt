@@ -17,7 +17,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mytodolist.data.SortOrder
 import com.example.mytodolist.data.Task
 import com.example.mytodolist.util.exhaustive
 import com.google.android.material.snackbar.Snackbar
@@ -147,14 +146,14 @@ class TaskFragment : Fragment(R.layout.fragment_tasks), TasksAdapter.OnItemClick
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_sort_by_name -> {
-                viewModel.onSortOrderSelected(SortOrder.BY_NAME)
-                true
-            }
-            R.id.action_sort_by_date_create -> {
-                viewModel.onSortOrderSelected(SortOrder.BY_DATE)
-                true
-            }
+//            R.id.action_sort_by_name -> {
+//                viewModel.onSortOrderSelected(SortOrder.BY_NAME)
+//                true
+//            }
+//            R.id.action_sort_by_date_create -> {
+//                viewModel.onSortOrderSelected(SortOrder.BY_DATE)
+//                true
+//            }
             R.id.action_hide_all_completed_tasks -> {
                 item.isChecked = !item.isChecked
                 viewModel.onHideCompletedClick(item.isChecked)

@@ -11,7 +11,7 @@ import javax.inject.Provider
 
 
 @Database(entities = [Task::class], version = 1)
-abstract class TaskDatabase() : RoomDatabase() {
+abstract class TaskDatabase : RoomDatabase() {
 
     abstract fun taskDao(): TaskDao
 
@@ -27,12 +27,9 @@ abstract class TaskDatabase() : RoomDatabase() {
             val dao = database.get().taskDao()
 
             applicationScope.launch {
-                dao.insert(Task("Hi mom"))
-                dao.insert(Task("Hi dear", completed = true))
-                dao.insert(Task("Hi brother"))
-                dao.insert(Task("Hi sister"))
-                dao.insert(Task("Hi friend", completed = true))
-                dao.insert(Task("Hi some one"))
+                dao.insert(Task("Put books on a shelf"))
+                dao.insert(Task("Cleaning bedrooms", completed = true))
+                dao.insert(Task("Do homeworks"))
             }
         }
     }
