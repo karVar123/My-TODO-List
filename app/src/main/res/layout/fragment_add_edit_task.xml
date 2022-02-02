@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ui.addEditTask.AddEditTaskFragment">
 
     <EditText
         android:id="@+id/editTextTaskName"
@@ -20,6 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/textViewTaskDateCreated"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -35,8 +37,8 @@
         android:layout_height="60dp"
         android:layout_margin="24dp"
         android:background="@drawable/bg_add_edit_btn"
-        android:padding="12dp"
-        android:src="@drawable/ic_add"
+        android:padding="14dp"
+        android:src="@drawable/ic_check_mark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

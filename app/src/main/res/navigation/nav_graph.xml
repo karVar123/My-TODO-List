@@ -3,10 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/taskFragment2">
+    app:startDestination="@id/taskFragment">
     <fragment
-        android:id="@+id/taskFragment2"
+        android:id="@+id/taskFragment"
         android:name="com.example.mytodolist.ui.tasks.TaskFragment"
-        android:label="fragment_tasks"
-        tools:layout="@layout/fragment_tasks" />
+        android:label="Tasks"
+        tools:layout="@layout/fragment_tasks">
+        <argument
+            android:name="tasks"
+            android:defaultValue="@null"
+            app:argType="com.example.mytodolist.data.Task"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_taskFragment_to_addEditTaskFragment"
+            app:destination="@id/addEditTaskFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addEditTaskFragment"
+        android:name="com.example.mytodolist.ui.addEditTask.AddEditTaskFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_add_edit_task">
+        <argument
+            android:name="task"
+            android:defaultValue="@null"
+            app:argType="com.example.mytodolist.data.Task"
+            app:nullable="true" />
+        <argument
+            android:name="title"
+            app:argType="string"/>
+    </fragment>
 </navigation>

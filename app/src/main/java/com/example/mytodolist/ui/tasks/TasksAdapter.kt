@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mytodolist.data.Task
 import com.example.mytodolist.databinding.TodoRecyclerViewItemBinding
 
-class TasksAdapter : ListAdapter<Task, TasksAdapter.TasksViewHolder>(DiffCallback()) {
+class TasksAdapter(private val listener: OnItemClickListener) :
+    ListAdapter<Task, TasksAdapter.TasksViewHolder>(DiffCallback()) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TasksViewHolder {
@@ -22,9 +23,30 @@ class TasksAdapter : ListAdapter<Task, TasksAdapter.TasksViewHolder>(DiffCallbac
         holder.bind(currentItem)
     }
 
-    class TasksViewHolder(
+    inner class TasksViewHolder(
         private val binding: TodoRecyclerViewItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            with(binding) {
+                root.setOnClickListener {
+                    val position = adapterPosition
+                    if (position != RecyclerView.NO_POSITION) {
+                        val task = getItem(position)
+                        listener.onItemClick(task)
+                    }
+                }
+                checkboxCompleted.setOnClickListener {
+                    val position = adapterPosition
+                    if (position != RecyclerView.NO_POSITION) {
+                        val task = getItem(position)
+                        listener.onCheckBoxClick(task, checkboxCompleted.isChecked)
+                    }
+                }
+            }
+        }
+
+
         fun bind(task: Task) {
             with(binding) {
                 checkboxCompleted.isChecked = task.completed
@@ -32,6 +54,12 @@ class TasksAdapter : ListAdapter<Task, TasksAdapter.TasksViewHolder>(DiffCallbac
             }
         }
     }
+
+    interface OnItemClickListener {
+        fun onItemClick(task: Task)
+        fun onCheckBoxClick(task: Task, isChecked: Boolean)
+    }
+
 
     class DiffCallback : DiffUtil.ItemCallback<Task>() {
         override fun areItemsTheSame(oldItem: Task, newItem: Task) = oldItem.id == newItem.id
