@@ -30,6 +30,7 @@ import kotlinx.coroutines.launch
 class TaskFragment : Fragment(R.layout.fragment_tasks), TasksAdapter.OnItemClickListener {
     private val viewModel: TasksViewModel by viewModels()
     private lateinit var searchView: SearchView
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -60,12 +61,10 @@ class TaskFragment : Fragment(R.layout.fragment_tasks), TasksAdapter.OnItemClick
                 }
             }).attachToRecyclerView(recyclerViewTasks)
 
-
             btnAddTask.setOnClickListener {
                 viewModel.onAddNewTaskClick()
             }
         }
-
 
         setFragmentResultListener("add_edit_request") { _, bundle ->
             val result = bundle.getInt("add_edit_result")
@@ -114,7 +113,6 @@ class TaskFragment : Fragment(R.layout.fragment_tasks), TasksAdapter.OnItemClick
             }
         }
 
-//        show navigation architecture
         setHasOptionsMenu(true)
     }
 
@@ -146,14 +144,7 @@ class TaskFragment : Fragment(R.layout.fragment_tasks), TasksAdapter.OnItemClick
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-//            R.id.action_sort_by_name -> {
-//                viewModel.onSortOrderSelected(SortOrder.BY_NAME)
-//                true
-//            }
-//            R.id.action_sort_by_date_create -> {
-//                viewModel.onSortOrderSelected(SortOrder.BY_DATE)
-//                true
-//            }
+
             R.id.action_hide_all_completed_tasks -> {
                 item.isChecked = !item.isChecked
                 viewModel.onHideCompletedClick(item.isChecked)

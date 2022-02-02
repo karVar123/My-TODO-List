@@ -46,7 +46,6 @@ class AddEditTaskViewModel @ViewModelInject constructor(
         addEditTaskEventChannel.send(AddEditTaskEvent.ShowInvalidInputMessage(text))
     }
 
-
     private fun createTask(task: Task) = viewModelScope.launch {
         taskDao.insert(task)
         addEditTaskEventChannel.send(AddEditTaskEvent.NavigateBAckWithResult(ADD_TASK_RESULT_OK))
@@ -57,7 +56,6 @@ class AddEditTaskViewModel @ViewModelInject constructor(
         taskDao.update(task)
         addEditTaskEventChannel.send(AddEditTaskEvent.NavigateBAckWithResult(EDIT_TASK_RESULT_OK))
     }
-
 
     sealed class AddEditTaskEvent {
         data class ShowInvalidInputMessage(val msg: String) : AddEditTaskEvent()
